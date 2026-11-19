@@ -1,0 +1,181 @@
+@font-face {
+  font-family: "Anton";
+  src: url("./fonts/Anton-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: #150826;
+  color: #f6eefc;
+  font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.app {
+  display: flex;
+  gap: 28px;
+  align-items: stretch;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 22px;
+  min-height: 100vh;
+}
+
+.controls {
+  width: 308px;
+  flex: 0 0 308px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.brand h1 {
+  font-family: "Anton", sans-serif;
+  font-size: 34px;
+  letter-spacing: 0.5px;
+  margin: 0 0 6px;
+  background: linear-gradient(180deg, #ffffff 20%, #ffe9b8 55%, #ffb300);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-transform: uppercase;
+}
+
+.brand p { margin: 0; color: #c9b8e8; font-size: 13.5px; }
+
+.controls section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+  padding: 12px 14px 14px;
+}
+
+.controls h2 {
+  margin: 0 0 10px;
+  font-size: 12px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: #ff8ac2;
+}
+
+.controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 9px;
+}
+
+.controls input[type="text"] {
+  font: inherit;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #4a2d75;
+  background: #1e0d38;
+  color: #fff;
+}
+
+.controls input[type="range"] { width: 100%; accent-color: #ff2a85; }
+
+.file-pick {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  border-radius: 9px;
+  background: linear-gradient(90deg, #ff2a85, #ff5e3a);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.file-pick input { display: none; }
+
+.tray { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.tray img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+.tray img.armed { border-color: #00e5ff; }
+.tray .tray-empty { color: #9d8bc4; font-size: 13px; margin: 2px 0; }
+
+.hint, .stage-hint { color: #9d8bc4; font-size: 12.5px; margin: 8px 0 0; }
+
+.button-row { display: flex; flex-wrap: wrap; gap: 7px; }
+.button-row button {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 11px;
+  border-radius: 999px;
+  border: 1px solid #4a2d75;
+  background: #241145;
+  color: #e9ddfb;
+  cursor: pointer;
+}
+.button-row button.active {
+  background: #ff2a85;
+  border-color: #ff2a85;
+  color: #fff;
+}
+
+.panel-label { margin: 0 0 8px; font-size: 13px; color: #e9ddfb; }
+
+.export {
+  width: 100%;
+  font: inherit;
+  font-weight: 800;
+  font-size: 15px;
+  padding: 11px;
+  border: 0;
+  border-radius: 9px;
+  background: linear-gradient(90deg, #00c2a8, #00e5ff);
+  color: #06222b;
+  cursor: pointer;
+}
+
+.status { min-height: 18px; margin: 8px 0 0; font-size: 13px; color: #8be9d8; }
+
+.stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.stage canvas {
+  max-width: 100%;
+  max-height: calc(100vh - 110px);
+  width: auto;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+  touch-action: none;
+  cursor: grab;
+}
+
+/* Screenshot mode: the cover alone, filling the viewport. */
+body.shot-cover .controls, body.shot-cover .stage-hint { display: none; }
+body.shot-cover .app { padding: 0; max-width: none; }
+body.shot-cover .stage { padding: 0; }
+body.shot-cover .stage canvas {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  max-height: none;
+  border-radius: 0;
+  box-shadow: none;
+}
